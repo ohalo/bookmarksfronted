@@ -58,7 +58,10 @@ export default function WebDAVFileManager() {
   const handleDownload = async (file: WebDAVFile) => {
     try {
       setError('');
-      const blob = await bookmarkApi.downloadWebDAVFile(file.path);
+      const response = await bookmarkApi.downloadWebDAVFile(file.path);
+      
+      // 从axios响应中提取Blob对象
+      const blob = response.data as Blob;
       
       // 创建下载链接
       const url = window.URL.createObjectURL(blob);
