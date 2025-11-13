@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || (typeof window !== 'undefined' && window.location.protocol === 'https:' 
-    ? 'https://39.104.72.229/api' 
+    ? 'https://bookmarks-topic.cloud/api'
     : 'http://localhost:8080/api'),
   headers: {
     'Content-Type': 'application/json',
