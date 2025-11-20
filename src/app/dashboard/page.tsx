@@ -128,7 +128,7 @@ export default function DashboardPage() {
               历史记录
             </span>
           </button>
-          <button
+          {/* <button
             onClick={() => setActiveTab('webdav')}
             className="pill"
             style={{
@@ -146,7 +146,7 @@ export default function DashboardPage() {
             }}>
               WebDAV配置
             </span>
-          </button>
+          </button> */}
           <button
             onClick={() => setActiveTab('webdav-files')}
             className="pill"
