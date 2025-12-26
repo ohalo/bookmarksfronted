@@ -2,9 +2,8 @@ import axios, { AxiosInstance, AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || (typeof window !== 'undefined' && window.location.protocol === 'https:' 
-    ? 'https://bookmarks-topic.cloud/api'
-    : 'http://localhost:8080/api'),
+  // 优先使用环境变量，如果没有设置则默认使用本地地址（开发环境）
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080/api',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -136,3 +136,43 @@ export interface WebDAVFile {
   contentType?: string;
 }
 
+export interface Feedback {
+  id: number;
+  userId: number;
+  username: string;
+  parentId?: number;
+  title: string;
+  content: string;
+  feedbackType: 'FEEDBACK' | 'SUGGESTION' | 'BUG';
+  status: 'ACTIVE' | 'RESOLVED' | 'CLOSED';
+  createdAt: string;
+  updatedAt: string;
+  replies?: Feedback[];
+  replyCount?: number;
+}
+
+export interface CreateFeedbackRequest {
+  title: string;
+  content: string;
+  feedbackType?: 'FEEDBACK' | 'SUGGESTION' | 'BUG';
+  parentId?: number;
+}
+
+export interface QuickRegisterRequest {
+  tokenSource?: 'IP' | 'MAC' | 'RANDOM' | 'MANUAL';
+  customInput?: string;
+  validityType?: 'WEEK' | 'MONTH_3' | 'MONTH_6' | 'YEAR' | 'PERMANENT';
+}
+
+export interface QuickRegisterResponse {
+  token: string;
+  expiresAt: string;
+  validityType: string;
+  sourceInfo: string;
+  message: string;
+}
+
+export interface TokenLoginRequest {
+  token: string;
+}
+

@@ -1,5 +1,5 @@
 import apiClient from './client';
-import { ApiResponse, JwtResponse, LoginRequest, RegisterRequest, WebDAVConfig, SendVerificationCodeRequest } from '@/types';
+import { ApiResponse, JwtResponse, LoginRequest, RegisterRequest, WebDAVConfig, SendVerificationCodeRequest, QuickRegisterRequest, QuickRegisterResponse, TokenLoginRequest } from '@/types';
 
 export const authApi = {
   login: (credentials: LoginRequest) => 
@@ -13,5 +13,11 @@ export const authApi = {
   
   updateWebDAVConfig: (config: WebDAVConfig) =>
     apiClient.post<ApiResponse<string>>('/auth/webdav/config', config),
+  
+  quickRegister: (data: QuickRegisterRequest) =>
+    apiClient.post<ApiResponse<QuickRegisterResponse>>('/auth/quick-register', data),
+  
+  tokenLogin: (data: TokenLoginRequest) =>
+    apiClient.post<ApiResponse<JwtResponse>>('/auth/token-login', data),
 };
 

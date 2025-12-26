@@ -7,8 +7,9 @@ import BookmarkGrid from '@/components/bookmarks/BookmarkGrid';
 import BookmarkHistoryList from '@/components/history/BookmarkHistoryList';
 import WebDAVConfigComponent from '@/components/webdav/WebDAVConfig';
 import WebDAVFileManager from '@/components/webdav/WebDAVFileManager';
+import FeedbackList from '@/components/feedback/FeedbackList';
 
-type TabType = 'bookmarks' | 'history' | 'webdav' | 'webdav-files';
+type TabType = 'bookmarks' | 'history' | 'webdav' | 'webdav-files' | 'feedback';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -166,6 +167,25 @@ export default function DashboardPage() {
                    书签文件
                  </span>
           </button>
+          <button
+            onClick={() => setActiveTab('feedback')}
+            className="pill"
+            style={{
+              borderRadius: 0,
+              borderBottom: activeTab === 'feedback' ? '2px solid var(--primary)' : '2px solid transparent',
+              background: 'transparent',
+              boxShadow: 'none',
+              padding: 'var(--space-3) var(--space-2)',
+              marginBottom: '-1px'
+            }}
+          >
+            <span style={{
+              color: activeTab === 'feedback' ? 'var(--primary)' : 'var(--muted)',
+              fontWeight: activeTab === 'feedback' ? 600 : 400
+            }}>
+              留言与建议
+            </span>
+          </button>
         </div>
       </div>
 
@@ -175,6 +195,7 @@ export default function DashboardPage() {
         {activeTab === 'history' && <BookmarkHistoryList />}
         {activeTab === 'webdav' && <WebDAVConfigComponent />}
         {activeTab === 'webdav-files' && <WebDAVFileManager />}
+        {activeTab === 'feedback' && <FeedbackList />}
       </div>
     </div>
   );
